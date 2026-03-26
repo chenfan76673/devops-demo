@@ -17,3 +17,9 @@ jobs:
 
     - name: 运行容器测试
       run: docker run -d -p 5000:5000 demo-app
+    
+    - name: 等待服务启动
+      run: sleep 5
+
+    - name: 验证服务
+      run: curl http://localhost:5000
