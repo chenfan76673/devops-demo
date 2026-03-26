@@ -1,0 +1,19 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 拉代码
+      uses: actions/checkout@v3
+
+    - name: 构建 Docker 镜像
+      run: docker build -t demo-app .
+
+    - name: 运行容器测试
+      run: docker run -d -p 5000:5000 demo-app
